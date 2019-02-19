@@ -28,7 +28,9 @@ The architectures supported by this image are:
 
 This container was designed to be started first to provide a connection to other containers (using `--net=container:vpn`, see below *Starting an NordVPN client instance*).
 
-**NOTE**: More than the basic privileges are needed for NordVPN. With docker 1.2 or newer you can use the `--cap-add=NET_ADMIN` and `--device /dev/net/tun` options. Earlier versions should run in privileged mode.
+**NOTE**
+- More than the basic privileges are needed for NordVPN. With docker 1.2 or newer you can use the `--cap-add=NET_ADMIN` and `--device /dev/net/tun` options. Earlier versions should run in privileged mode.
+- Keep STDIN open even if not attached `-i` 
 
 ## Starting an NordVPN instance
 
@@ -85,8 +87,8 @@ services:
     network_mode: service:vpn
    
 ```
-**IMPORTANT NOTE**
- `stdin_open: true` for docker-compose or `-i` for docker command are required when running on detached mode -d
+**NOTE**
+ `stdin_open: true` is required even when running on detached mode -d
 
 ## ENVIRONMENT VARIABLES
 
