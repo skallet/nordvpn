@@ -77,6 +77,7 @@ services:
       - TZ=America/Mexico_City
     ports:
       - 8080:80
+    stdin_open: true
     restart: unless-stopped
   
   web:
@@ -84,6 +85,8 @@ services:
     network_mode: service:vpn
    
 ```
+**IMPORTANT NOTE**
+ `stdin_open: true` for docker-compose or `-i` for docker command are required when running on detached mode -d
 
 ## ENVIRONMENT VARIABLES
 
@@ -99,7 +102,7 @@ services:
 * `PORTS`       - Space separate ports that are allowed for input connections (all by default).
 * `NETWORK`     - CIDR network (IE 192.168.1.0/24), add a route to allows replies once the VPN is up.
 
-** Note ** CyberSec & DNS. Setting CyberSec disables user defined DNS servers and vice versa.
+**Note** CyberSec & DNS. Setting CyberSec disables user defined DNS servers and vice versa.
 
 ## Issues
 
