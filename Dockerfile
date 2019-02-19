@@ -15,7 +15,7 @@ ENV PROTOCOL=UDP \
 VOLUME ["/root/.config/nordvpn/"]
 
 HEALTHCHECK --timeout=15s --interval=60s --start-period=120s \
-            CMD nordvpn status | grep "Status: Connected" || exit 1
+            CMD curl -fL 'https://api.ipify.org' || exit 1
 
 #CROSSRUN [ "cross-build-start" ]
 RUN curl "https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_${VER}_$(echo ${ARCH} | sed 's/v7//').deb" -o /tmp/nordvpn.deb && \

@@ -5,8 +5,10 @@
 expect -c 'spawn nordvpn login 
            expect {
              "sername:" { 
+               sleep 1
                send "$env(USER)\r" 
                expect "assword:"
+               sleep 1
                send "$env(PASS)\r"
              }
              eof    	    
