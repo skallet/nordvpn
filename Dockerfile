@@ -1,23 +1,28 @@
-FROM alpine:3.7
+ARG ARCH
+FROM balenalib/${ARCH}-debian:stretch
 
 LABEL maintainer="Julio Gutierrez <bubuntux@gmail.com>"
 
-COPY nordVpn.sh /usr/bin
+ARG ARCH
+ARG VER
+ENV PROTOCOL=UDP \
+    KILL_SWITCH=enabled \
+    OBFUSCATE=disabled \
+    CYBER_SEC=disabled \
+    DNS=disabled \
+    PORTS=all 
 
-HEALTHCHECK --start-period=15s --timeout=15s --interval=60s \
-            CMD curl -fL 'https://api.ipify.org' || exit 1
+VOLUME ["/root/.config/nordvpn/"]
 
-ENV URL_NORDVPN_API="https://api.nordvpn.com/server" \
-    URL_RECOMMENDED_SERVERS="https://nordvpn.com/wp-admin/admin-ajax.php?action=servers_recommendations" \
-    URL_OVPN_FILES="https://downloads.nordcdn.com/configs/archives/servers/ovpn.zip" \
-    MAX_LOAD=70
+HEALTHCHECK --timeout=15s --interval=60s --start-period=120s \
+            CMD nordvpn status | grep "Status: Connected" || exit 1
 
-VOLUME ["/vpn/ovpn/"]
+#CROSSRUN [ "cross-build-start" ]
+RUN curl "https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/nordvpn_${VER}_$(echo ${ARCH} | sed 's/v7//').deb" -o /tmp/nordvpn.deb && \
+    apt-get update && apt-get upgrade && \
+    apt-get install expect openvpn /tmp/nordvpn.deb && \
+    apt-get autoremove && rm -rf /var/lib/apt/lists/* && rm -rf /tmp/*
+#CROSSRUN [ "cross-build-end" ]
 
-    # Install dependencies 
-RUN apk --no-cache --no-progress update && \
-    apk --no-cache --no-progress upgrade && \
-    apk --no-cache --no-progress add bash curl unzip iptables ip6tables jq openvpn tini && \
-    mkdir -p /vpn/ovpn/
-
-ENTRYPOINT ["/sbin/tini", "--", "/usr/bin/nordVpn.sh"]
+COPY nordVpn.sh /usr/bin 
+CMD /usr/bin/nordVpn.sh
