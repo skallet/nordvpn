@@ -30,7 +30,7 @@ This container was designed to be started first to provide a connection to other
 
 **NOTE**
 - More than the basic privileges are needed for NordVPN. With docker 1.2 or newer you can use the `--cap-add=NET_ADMIN` and `--device /dev/net/tun` options. Earlier versions should run in privileged mode.
-- Keep STDIN open even if not attached `-i` 
+- **Keep STDIN open even if not attached**, so even when running `docker run -d ...` the parameter `-i` should also be included
 
 ## Starting an NordVPN instance
 
