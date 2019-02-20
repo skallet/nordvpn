@@ -24,7 +24,8 @@ nordvpn set cybersec ${CYBER_SEC}
 nordvpn set obfuscate ${OBFUSCATE}
 nordvpn set dns ${DNS}
 
-nordvpn connect ${COUNTRY} ${CITY}
+COUNTRY=(${COUNTRY//;/ }) #keep backward compatibility
+nordvpn connect ${COUNTRY[0]} ${CITY}
 
 if [[ -n ${PORTS} ]]; then
   shopt -s nocasematch
