@@ -1,6 +1,5 @@
 .git
-.travis.yml
-deploy.sh
+hooks
 LICENSE
-README.md
 NordVpn_logo.png
+README.md

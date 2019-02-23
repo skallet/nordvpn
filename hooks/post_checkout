@@ -1,0 +1,14 @@
+#!/bin/bash
+
+DOCKER_VERSION=18.09.2
+DOCKER_MD5SUM=38e8e8db37bfb453a050ead4d447aaa3
+
+curl -s "https://download.docker.com/linux/static/stable/x86_64/docker-${DOCKER_VERSION}.tgz" | gunzip | tar -x --strip-components 1 docker/docker
+if ! echo "${DOCKER_MD5SUM} docker" | md5sum --check --status ; then
+    echo "Hash not match:"
+    md5sum --binary docker
+    exit 1
+fi
+
+mkdir -p ~/.docker
+echo "{'auths': ${DOCKERCFG}, 'experimental': 'enabled'}" | tr "'" '"' > ~/.docker/config.json

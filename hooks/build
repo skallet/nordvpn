@@ -1,0 +1,8 @@
+#!/bin/bash
+source hooks/_env
+
+docker build --build-arg ARCH=amd64 -f $DOCKERFILE_PATH -t "${DOCKER_REPO}:amd64-${VERSION}" .
+
+sed -i 's/#CROSSRUN/RUN/g' $DOCKERFILE_PATH
+
+docker build --build-arg ARCH=armv7hf -f $DOCKERFILE_PATH -t "${DOCKER_REPO}:armv7hf-${VERSION}" .

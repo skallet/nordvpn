@@ -1,0 +1,6 @@
+#!/bin/bash
+export PATH=".:$PATH"
+export VERSION=`cat ${DOCKERFILE_PATH} | grep "NORDVPN_BIN_VERSION=" | sed 's/.*=//'`
+if [[ "${GIT_BRANCH}" != "master" ]]; then
+  export VERSION="${VERSION}-${GIT_BRANCH}"
+fi
