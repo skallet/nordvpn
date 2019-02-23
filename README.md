@@ -1,7 +1,7 @@
 [![logo](https://github.com/bubuntux/nordvpn/raw/master/NordVpn_logo.png)](https://nordvpn.com/)
 
 [![Build Status](https://travis-ci.com/bubuntux/nordvpn.svg?branch=master)](https://travis-ci.com/bubuntux/nordvpn)
-[![](https://images.microbadger.com/badges/image/bubuntux/nordvpn.svg)](https://microbadger.com/images/bubuntux/nordvpn "Get your own image badge on microbadger.com")
+[![](https://images.microbadger.com/badges/image/bubuntux/nordvpn.svg)](https://microbadger.com/images/bubuntux/nordvpn)
 
 # NordVPN
 
