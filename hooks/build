@@ -5,5 +5,5 @@ docker build -f $DOCKERFILE_PATH --build-arg ARCH=amd64 --build-arg NORDVPN_BIN_
 
 sed -i 's/#CROSSRUN/RUN/g' $DOCKERFILE_PATH
 
-docker build -f $DOCKERFILE_PATH --build-arg ARCH=aarch64 --build-arg NORDVPN_BIN_ARCH=aarch64 -t "${DOCKER_REPO}:aarch64-${VERSION}" .
 docker build -f $DOCKERFILE_PATH --build-arg ARCH=armv7hf --build-arg NORDVPN_BIN_ARCH=armhf -t "${DOCKER_REPO}:armv7hf-${VERSION}" .
+docker build -f $DOCKERFILE_PATH --build-arg ARCH=aarch64 --build-arg NORDVPN_BIN_ARCH=aarch64 -t "${DOCKER_REPO}:aarch64-${VERSION}" .

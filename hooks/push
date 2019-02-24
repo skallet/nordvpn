@@ -1,22 +1,23 @@
 #!/bin/bash
 source hooks/_env
 
-docker push "${DOCKER_REPO}:amd64-${VERSION}"
 docker push "${DOCKER_REPO}:aarch64-${VERSION}"
 docker push "${DOCKER_REPO}:armv7hf-${VERSION}"
+docker push "${DOCKER_REPO}:amd64-${VERSION}"
 docker manifest create ${DOCKER_REPO}:${VERSION} ${DOCKER_REPO}:amd64-${VERSION} ${DOCKER_REPO}:aarch64-${VERSION} ${DOCKER_REPO}:armv7hf-${VERSION}
 docker manifest annotate ${DOCKER_REPO}:${VERSION} ${DOCKER_REPO}:armv7hf-${VERSION} --os linux --arch arm
-docker manifest annotate ${DOCKER_REPO}:${VERSION} ${DOCKER_REPO}:aarch64-${VERSION} --os linux --arch arm --variant v8
 docker manifest annotate ${DOCKER_REPO}:${VERSION} ${DOCKER_REPO}:aarch64-${VERSION} --os linux --arch arm64 --variant v8
-docker manifest annotate ${DOCKER_REPO}:${VERSION} ${DOCKER_REPO}:aarch64-${VERSION} --os linux --arch aarch64 --variant v8
 docker manifest push --purge ${DOCKER_REPO}:${VERSION}
 
 if [[ "${GIT_BRANCH}" == "master" ]]; then
-  docker tag "${DOCKER_REPO}:amd64-${VERSION}" "${DOCKER_REPO}:amd64-latest"
-  docker push "${DOCKER_REPO}:amd64-latest"
+  docker tag "${DOCKER_REPO}:aarch64-${VERSION}" "${DOCKER_REPO}:aarch64-latest"
+  docker push "${DOCKER_REPO}:aarch64-latest"
   docker tag "${DOCKER_REPO}:armv7hf-${VERSION}" "${DOCKER_REPO}:armv7hf-latest"
   docker push "${DOCKER_REPO}:armv7hf-latest"
+  docker tag "${DOCKER_REPO}:amd64-${VERSION}" "${DOCKER_REPO}:amd64-latest"
+  docker push "${DOCKER_REPO}:amd64-latest"
   docker manifest create ${DOCKER_REPO}:latest ${DOCKER_REPO}:amd64-latest ${DOCKER_REPO}:armv7hf-latest
   docker manifest annotate ${DOCKER_REPO}:latest ${DOCKER_REPO}:armv7hf-latest --os linux --arch arm
+  docker manifest annotate ${DOCKER_REPO}:latest ${DOCKER_REPO}:aarch64-latest --os linux --arch arm64 --variant v8
   docker manifest push --purge ${DOCKER_REPO}:latest
 fi
