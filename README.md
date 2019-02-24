@@ -1,27 +1,33 @@
+# [bubuntux/NordVPN](https://github.com/bubuntux/nordvpn)
+
+<p align="center">
+    <img src="https://badgen.net/github/license/bubuntux/nordvpn"/>
+    <img src="https://images.microbadger.com/badges/image/bubuntux/nordvpn.svg"/>
+    <img src="https://badgen.net/docker/pulls/bubuntux/nordvpn?icon=docker&label=pulls"/>
+    <img src="https://badgen.net/docker/stars/bubuntux/nordvpn?icon=docker&label=stars"/>
+    <img src="https://badgen.net/github/forks/bubuntux/nordvpn?icon=github&label=forks"/>
+    <img src="https://badgen.net/github/stars/bubuntux/nordvpn?icon=github&label=stars"/>
+    <img src="https://badgen.net/github/status/bubuntux/nordvpn"/>
+</p>
+
+This is a NordVPN client docker container that uses the official [binaries](https://nordvpn.com/download/linux/). It makes routing containers' traffic through NordVPN easy.
+
 [![logo](https://github.com/bubuntux/nordvpn/raw/master/NordVpn_logo.png)](https://nordvpn.com/)
-
-[![](https://images.microbadger.com/badges/image/bubuntux/nordvpn.svg)](https://microbadger.com/images/bubuntux/nordvpn)
-
-# NordVPN
-
-This is an OpenVPN client docker container that use least loaded NordVPN servers. It makes routing containers' traffic through OpenVPN easy.
-
-# What is OpenVPN?
-
-OpenVPN is an open-source software application that implements virtual private network (VPN) techniques for creating secure point-to-point or site-to-site connections in routed or bridged configurations and remote access facilities. It uses a custom security protocol that utilizes SSL/TLS for key exchange. It is capable of traversing network address translators (NATs) and firewalls.
 
 # Supported Architectures
 
-This images support multiple architectures such as `x86-64` and `armhf`. The docker manifest is used for multi-platform awareness. More information is available from docker [here](https://github.com/docker/distribution/blob/master/docs/spec/manifest-v2-2.md#manifest-list). 
+This image use [docker manifest for multi-platform awareness](https://github.com/docker/distribution/blob/master/docs/spec/manifest-v2-2.md#manifest-list). 
 
 Simply pulling `bubuntux/nordvpn` should retrieve the correct image for your arch, but you can also pull specific arch images via tags.
 
-The architectures supported by this image are:
+| Architecture | Tag | Tested |
+| :----: | :---: | :-: |
+| Linux x86-64 | amd64-latest | X |
+| ARMv7 32-bit | armv7hf-latest | X |
+| ARMv8 64-bit | aarch64-latest | - |
+| ARMv5 32-bit | armv5e-latest | - |
+| x86/i686 | i386-latest | - |
 
-| Architecture | Tag |
-| :----: | --- |
-| x86-64 | amd64-latest |
-| armhf | armv7hf-latest |
 
 # How to use this image
 
