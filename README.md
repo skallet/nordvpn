@@ -1,6 +1,6 @@
 # [bubuntux/NordVPN](https://github.com/bubuntux/nordvpn)
 
-<p align="center">
+<p>
     <img src="https://badgen.net/github/license/bubuntux/nordvpn"/>
     <img src="https://images.microbadger.com/badges/image/bubuntux/nordvpn.svg"/>
     <img src="https://badgen.net/docker/pulls/bubuntux/nordvpn?icon=docker&label=pulls"/>
