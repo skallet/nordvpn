@@ -14,9 +14,7 @@ This is a NordVPN client docker container that uses the official [binaries](http
 
 # Supported Architectures
 
-This image use [docker manifest for multi-platform awareness](https://github.com/docker/distribution/blob/master/docs/spec/manifest-v2-2.md#manifest-list). 
-
-Simply pulling `bubuntux/nordvpn` should retrieve the correct image for your arch, but you can also pull specific arch images via tags.
+This image use [docker manifest for multi-platform awareness](https://github.com/docker/distribution/blob/master/docs/spec/manifest-v2-2.md#manifest-list), simply pulling `bubuntux/nordvpn` should retrieve the correct image for your arch, but you can also pull specific arch images via tags.
 
 | Architecture | Tag | Tested |
 | :----: | :---: | :-: |
