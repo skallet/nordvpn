@@ -1,18 +1,16 @@
-# [bubuntux/NordVPN](https://github.com/bubuntux/nordvpn)
+[![logo](https://github.com/bubuntux/nordvpn/raw/master/NordVpn_logo.png)](https://nordvpn.com/)
 
 <p>
-    <img src="https://badgen.net/github/license/bubuntux/nordvpn"/>
-    <img src="https://images.microbadger.com/badges/image/bubuntux/nordvpn.svg"/>
-    <img src="https://badgen.net/docker/pulls/bubuntux/nordvpn?icon=docker&label=pulls"/>
-    <img src="https://badgen.net/docker/stars/bubuntux/nordvpn?icon=docker&label=stars"/>
-    <img src="https://badgen.net/github/forks/bubuntux/nordvpn?icon=github&label=forks"/>
-    <img src="https://badgen.net/github/stars/bubuntux/nordvpn?icon=github&label=stars"/>
-    <img src="https://badgen.net/github/status/bubuntux/nordvpn"/>
+    <a href="https://github.com/bubuntux/nordvpn/blob/master/LICENSE"><img src="https://badgen.net/github/license/bubuntux/nordvpn?color=cyan"/></a>
+    <a href="https://cloud.docker.com/u/bubuntux/repository/docker/bubuntux/nordvpn"><img src="https://images.microbadger.com/badges/image/bubuntux/nordvpn.svg"/></a>
+    <a href="https://cloud.docker.com/u/bubuntux/repository/docker/bubuntux/nordvpn"><img src="https://badgen.net/docker/pulls/bubuntux/nordvpn?icon=docker&label=pulls"/></a>
+    <a href="https://cloud.docker.com/u/bubuntux/repository/docker/bubuntux/nordvpn"><img src="https://badgen.net/docker/stars/bubuntux/nordvpn?icon=docker&label=stars"/></a>
+    <a href="https://github.com/bubuntux/nordvpn"><img src="https://badgen.net/github/forks/bubuntux/nordvpn?icon=github&label=forks"/></a>
+    <a href="https://github.com/bubuntux/nordvpn"><img src="https://badgen.net/github/stars/bubuntux/nordvpn?icon=github&label=stars"/></a>
+    <a href="https://cloud.docker.com/repository/docker/bubuntux/nordvpn/builds"><img src="https://badgen.net/github/status/bubuntux/nordvpn"/></a>
 </p>
 
-This is a NordVPN client docker container that uses the official [binaries](https://nordvpn.com/download/linux/). It makes routing containers' traffic through NordVPN easy.
-
-[![logo](https://github.com/bubuntux/nordvpn/raw/master/NordVpn_logo.png)](https://nordvpn.com/)
+This is a NordVPN client docker container that uses the official [binaries](https://nordvpn.com/download/linux/) to provide a faster and more reliable connection, thanks to the better server selection. It makes routing containers' traffic through NordVPN easy.
 
 # Supported Architectures
 
