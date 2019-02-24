@@ -24,7 +24,7 @@ if [[ "${GIT_BRANCH}" == "master" ]]; then
   docker push "${DOCKER_REPO}:armv7hf-latest"
   docker tag "${DOCKER_REPO}:amd64-${VERSION}" "${DOCKER_REPO}:amd64-latest"
   docker push "${DOCKER_REPO}:amd64-latest"
-  docker manifest create ${DOCKER_REPO}:latest ${DOCKER_REPO}:i386-latest ${DOCKER_REPO}:armv5e ${DOCKER_REPO}:aarch64-latest ${DOCKER_REPO}:armv7hf-latest ${DOCKER_REPO}:amd64-latest
+  docker manifest create ${DOCKER_REPO}:latest ${DOCKER_REPO}:i386-latest ${DOCKER_REPO}:armv5e-latest ${DOCKER_REPO}:aarch64-latest ${DOCKER_REPO}:armv7hf-latest ${DOCKER_REPO}:amd64-latest
   docker manifest annotate ${DOCKER_REPO}:latest ${DOCKER_REPO}:i386-latest    --os linux --arch 386
   docker manifest annotate ${DOCKER_REPO}:latest ${DOCKER_REPO}:armv5e-latest  --os linux --arch arm   --variant v5
   docker manifest annotate ${DOCKER_REPO}:latest ${DOCKER_REPO}:armv7hf-latest --os linux --arch arm   --variant v7
