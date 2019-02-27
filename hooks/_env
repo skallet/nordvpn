@@ -1,6 +1,32 @@
 #!/bin/bash
-export PATH=".:$PATH"
-export VERSION=`cat ${DOCKERFILE_PATH} | grep "NORDVPN_BIN_VERSION=" | sed 's/.*=//'`
-if [[ "${GIT_BRANCH}" != "master" ]]; then
-  export VERSION="${VERSION}-${GIT_BRANCH}"
+if [[ ! -f "/tmp/${SOURCE_COMMIT}" ]]; then
+  ver=`date -u +"%Y.%m.%d"`
+  if [[ "${GIT_BRANCH}" != "master" ]]; then
+    ver+="-${GIT_BRANCH}"
+  fi
+  echo ${ver} > "/tmp/${SOURCE_COMMIT}"
 fi
+
+manifestArch() {
+  local options
+  case $1 in
+    i386)
+      options="386" ;;
+    amd64)
+      options="amd64" ;;
+    armv5e)
+      options="arm --variant v5" ;;
+    armv6)
+      options="arm --variant v6" ;;
+    armv7hf)
+      options="arm --variant v7" ;;
+    aarch64)
+      options="arm64 --variant v8" ;;
+  esac
+  echo ${options}
+}
+
+export VERSION=`cat "/tmp/${SOURCE_COMMIT}"`
+export X86="i386 amd64"
+export ARM="armv7hf aarch64" # armv5e armv6 not available in balenalib
+export PATH=".:$PATH"

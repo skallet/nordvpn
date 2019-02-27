@@ -1,11 +1,15 @@
 #!/bin/bash
 source hooks/_env
 
-docker build -f $DOCKERFILE_PATH --build-arg ARCH=amd64 --build-arg NORDVPN_BIN_ARCH=amd64 -t "${DOCKER_REPO}:amd64-${VERSION}" .
-docker build -f $DOCKERFILE_PATH --build-arg ARCH=i386  --build-arg NORDVPN_BIN_ARCH=i386  -t "${DOCKER_REPO}:i386-${VERSION}"  .
+for arch in ${X86} ; do
+  echo "**** Building ${arch}-${VERSION} ****"
+  docker build -f ${DOCKERFILE_PATH} --build-arg ARCH=${arch} -t "${DOCKER_REPO}:${arch}-${VERSION}" .
+done
 
-sed -i 's/#CROSSRUN/RUN/g' $DOCKERFILE_PATH
+echo "**** Enabling cross platform build ****"
+sed -i 's/^#CROSSRUN/RUN/g' $DOCKERFILE_PATH
 
-docker build -f $DOCKERFILE_PATH --build-arg ARCH=armv5e  --build-arg NORDVPN_BIN_ARCH=armel   -t "${DOCKER_REPO}:armv5e-${VERSION}"  .
-docker build -f $DOCKERFILE_PATH --build-arg ARCH=armv7hf --build-arg NORDVPN_BIN_ARCH=armhf   -t "${DOCKER_REPO}:armv7hf-${VERSION}" .
-docker build -f $DOCKERFILE_PATH --build-arg ARCH=aarch64 --build-arg NORDVPN_BIN_ARCH=aarch64 -t "${DOCKER_REPO}:aarch64-${VERSION}" .
+for arch in ${ARM} ; do
+  echo "**** Building ${arch}-${VERSION} ****"
+  docker build -f ${DOCKERFILE_PATH} --build-arg ARCH=${arch} -t "${DOCKER_REPO}:${arch}-${VERSION}" .
+done
