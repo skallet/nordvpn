@@ -109,6 +109,8 @@ By the fault the container will try to reconnect to the same server when disconn
  * `NET_IFACE` - Network Interface to bind the vpn (Useful when combined with `--network host` to protect the entire host).
 
 # Versions 
+ * **2019.04.16**
+    - VPN server selecting randomization.
  * **2019.04.06**
     - Enhance reconnect mechanism [#28](https://github.com/bubuntux/nordvpn/issues/28).
  * **2019.03.12**
