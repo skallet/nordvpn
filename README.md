@@ -90,6 +90,7 @@ By the fault the container will try to reconnect to the same server when disconn
 
  * `USER`     - User for NordVPN account.
  * `PASS`     - Password for NordVPN account, surrounding the password in single quotes will prevent issues with special characters such as `$`.
+ * `LIMITS`   - Number of vpn for random selection
  * `COUNTRY`  - Use servers from an specific country (IE United_States, Australia, NZ, Hong Kong, MX, [full list](https://nordvpn.com/servers/)).  
  * `CATEGORY` - Use servers from an specific category (IE Double_VPN, Standard VPN servers). Allowed categories are:
    * `Standard VPN servers` Get connected to ultra-fast VPN servers anywhere around the globe to change your IP address and protect your browsing activities.
@@ -109,6 +110,8 @@ By the fault the container will try to reconnect to the same server when disconn
  * `NET_IFACE` - Network Interface to bind the vpn (Useful when combined with `--network host` to protect the entire host).
 
 # Versions 
+ * **2019.05.01**
+    - Limit env variable added.
  * **2019.04.16**
     - VPN server selecting randomization.
  * **2019.04.06**
