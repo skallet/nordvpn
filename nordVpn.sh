@@ -131,7 +131,7 @@ select_hostname() {
     filters+="$(technology_filter )"
 
     lim=${LIMITS:-5}
-
+    echo "Fetching: ${nordvpn_api}/v1/servers/recommendations?${filters}limit=${lim}"
     hostname=`curl -s "${nordvpn_api}/v1/servers/recommendations?${filters}limit=${lim}" | jq -r ".[].hostname" | shuf | head -n 1`
     if [[ -z ${hostname} ]]; then
         echo "Unable to find a server with the specified parameters, using any recommended server" > /dev/stderr
