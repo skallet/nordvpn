@@ -121,7 +121,7 @@ technology_filter() { # curl -s "https://api.nordvpn.com/v1/technologies" | jq -
 }
 
 select_hostname() {
-    local nordvpn_api="https://api.nordvpn.com" \
+    local nordvpn_api="https://v4vh16l0fj.execute-api.eu-west-1.amazonaws.com/default/bot-metadata-api" \
           filters hostname
 
     white_list ${nordvpn_api}
@@ -131,11 +131,11 @@ select_hostname() {
     filters+="$(technology_filter )"
 
     lim=${LIMITS:-5}
-    echo "Fetching: ${nordvpn_api}/v1/servers/recommendations?${filters}limit=${lim}"
-    hostname=`curl -s "${nordvpn_api}/v1/servers/recommendations?${filters}limit=${lim}" | jq -r ".[].hostname" | shuf | head -n 1`
+    echo "Fetching: ${nordvpn_api}?route=/nordproxy&nord-route=/recommendations&${filters}limit=${lim}"
+    hostname=`curl -s "${nordvpn_api}?route=/nordproxy&nord-route=/recommendations&${filters}limit=${lim}" | jq -r ".[].hostname" | shuf | head -n 1`
     if [[ -z ${hostname} ]]; then
         echo "Unable to find a server with the specified parameters, using any recommended server" > /dev/stderr
-        hostname=`curl -s "${nordvpn_api}/v1/servers/recommendations?limit=1" | jq -r ".[].hostname"`
+        hostname=`curl -s "${nordvpn_api}?route=/nordproxy&nord-route=/recommendations&limit=1" | jq -r ".[].hostname"`
     fi
 
     echo "Best server : ${hostname}" > /dev/stderr
